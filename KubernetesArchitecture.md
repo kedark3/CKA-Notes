@@ -18,6 +18,8 @@ Let's look at the functionality of each of the components.
 - EtcD is a Key-Value datastore.
 - In K8s it stores information about Nodes, Pods, Configs, Secrets and everything else.
 - Every operation that you perform, it is updated in the EtcD cluster.
+- EtcD runs as a cluster and it can be deployed on same nodes as k8s or externally as well.
+- It uses port 2379
 
 # Kube-ApiServer
 
@@ -25,8 +27,7 @@ Let's look at the functionality of each of the components.
 - To begin with, whenever you run a Kubectl command it talks to ApiServer. Your request is authenticated, validated and then you receive the response back, which is usually queried from EtcD cluster.
 - ApiServer is the only component that talks to EtcD Cluster directly.
 - You can talk to kube apiserver directly using curl commands as well.
-- EtcD runs as a cluster and it can be deployed on same nodes as k8s or externally as well.
-- It uses port 2379
+
 
 ## Example WF - Pod Creation
 

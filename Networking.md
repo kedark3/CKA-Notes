@@ -165,6 +165,11 @@ Let's assume that we have two VMs(or cloud instances) that are trying to communi
 - In a managed layer two switch, there is a forwarding table plus an ARP table but the latter is only used for the management interface to talk to interested hosts (i.e. the PC you are using to configure the switch.) In a managed layer 3 switch there will be a forwarding table plus an ARP table, since it needs it for the management interface plus router functionality exists to perform forwarding between subnets.
 
 
+## Spanning Tree
+
+In a network, where there are multiple switches, the all use Bridge Protocol Data Unit (BPDU) to calculate the cost of sending packets across the networks and form a Spanning Tree. A spanning tree wouldn't have a Loop. To avoid loops, each bridge decides which of its ports are Root port(R), Designated Port (D) and Blocking Port(B).Decision is made using bridge ID, one with lowest ID set its port as Designated and other with higher ID sets link as Blocking.
+
+When a look is found, one of the switches will mark the link as blocking and other will mark it as designated. This way traffic can only flow one way and not both ways hence avoiding loop partially.
 
 ## Routing
 
@@ -196,6 +201,8 @@ Although, If you have two different routers in your network, one for private and
     - Next Hop: This is the IP of next router, which should receive the data based on the destination network
     - Total Hops: how many hops ot will need to get to destination address.
 
+
+In general Routing Protocol is either Link State(OSPF, IS-IS) or Distance Vector(BGP, EIGRP, RIP). While Link state tries to build full map of the network, distance vector only knows how far away the network is and direction to reach the network. Both share information with all of the neighbors.
 
 
 ## VLANs

@@ -1,3 +1,21 @@
+# SSL vs TLS
+
+##  SSL 
+- Secure Sockets Layer
+- Developed by NetScape in early 1990s
+- V1-3 are available, v3 released in 1996
+- Superseded by TLS, hence should no longer be used
+- Prone to POODLE Attack- Malicious JS can compromise secure HTTP session cookies, HeartBleed bug- which did not check for length of the message and respond with requested length message, so attacker can send "Dog, 60" and response would be "Dog" followed by 57 characters that were in memory and that can cause unwanted data leaks
+
+## TLS
+
+- Better and more secure than SSL
+- Man-in-the-middle(MITM) attack tring to downgrade the security protocol used can be mitigated with TLS_FALLBACK_SCSV
+- Disable SSL, and enable TLS 1.1 or better
+- Introduced in 1999
+- TLS v1.0 to 1.3, v1.0 is old and we should disable it. Such as the Beast Attack.
+
+
 # TLS Certificates
 
 In this document, TLS Certificates and how they are used in K8s.
