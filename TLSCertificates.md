@@ -28,7 +28,7 @@ Let's assume that you are trying to connect to a server over SSH. You will 1st e
 What if you are trying to do same thing, have secure communication with a WebServer. In the case of Web communication we need to have secure key exchange without using any passwords.
 - In this case you will initiate with the WebServer.
 - WebServer sends you a Certificate that is trusted by a CA that you and WebServer both trust(and it contains server's own public key).
-- You use that Certificate to verify the identity and public key from the message to encrypt your symmetric key and send it to the Server.
+- You use that Certificate to verify the identity and public key from the message to encrypt your symmetric key and send it to the Server. Before you do that though, your browser tries to use CA's pub key to validate the cert is indeed signed by a CA. If not, you may see warning in your browser.
 - Server then decrypts the symmetric key you sent and then you can start sending requests to the server that are encrypted with your symmetric key and server can decrypt it using symmetric key it has from you.
 - When servers sends back the data, you can use the certificate that server sent you earlier to validate the contents of the messages you are receiving are indeed from the server.
 
