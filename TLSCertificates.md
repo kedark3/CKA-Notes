@@ -27,9 +27,11 @@ Let's assume that you are trying to connect to a server over SSH. You will 1st e
 
 What if you are trying to do same thing, have secure communication with a WebServer. In the case of Web communication we need to have secure key exchange without using any passwords.
 - In this case you will initiate with the WebServer.
-- WebServer sends you a Certificate that is trusted by a CA that you and WebServer both trust.
-- You use that Certificate to encrypt your public key and send it to the Server.
-- Server then decrypts the public key you sent and then you can start sending requests to the server that are encrypted with your private key and server can decrypt it using public key it has from you.
+- WebServer sends you a Certificate that is trusted by a CA that you and WebServer both trust(and it contains server's own public key).
+- You use that Certificate to verify the identity and public key from the message to encrypt your symmetric key and send it to the Server.
+- Server then decrypts the symmetric key you sent and then you can start sending requests to the server that are encrypted with your symmetric key and server can decrypt it using symmetric key it has from you.
 - When servers sends back the data, you can use the certificate that server sent you earlier to validate the contents of the messages you are receiving are indeed from the server.
 
 See Certificate as a public key and key as private key in this scenario, analogous to SSH.
+
+An important thing to note here is that Server uses Asymmetric Key while client is using Symmetric key. What that means is, when Client sends the key to the server, he is sending the 1 key he has, that can encrypt and decrypt the data using only that one key. But when initial handshake and key transfer happens, Client uses server's Public key(Cert) to encrypt his own symmetric key and server uses his own Private key to decrypt the message from client and extract his symmetric key.
